@@ -1,0 +1,23 @@
+.sal-update-notification > .body {
+  width:100%;
+  padding:0px;
+}
+.add {
+  color: green;
+}
+.modify {
+  color: yellow;
+}
+.delete {
+  color: red;
+}
+
+.notification-text {
+  width:100%;
+  height:100%;
+}
+
+.close-notification {
+  position:absolute;
+  right:-15px;
+}

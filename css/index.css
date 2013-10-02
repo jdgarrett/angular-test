@@ -1,0 +1,88 @@
+.sal-notification-poster {
+	position:absolute;
+	z-index:1000;
+	left:0;
+}
+
+html, body {
+    -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
+	margin  : 0;
+	padding : 0;
+	height  : 100%;
+	/* width   : 100%; */
+}
+
+.sal-notifications {
+	position: absolute;
+	right: 0px;
+	width: 320px;
+	z-index: 1000;
+	top: 0px;
+}
+
+#map {
+    min-height:100%;
+	height: 100%;
+	width: 100%;
+}
+
+.panel {
+	margin: 0;
+	border: 0;
+	font-weight: normal;
+	overflow: visible;
+	background-color:#97B3CD;
+}
+
+.modal-header {
+	color: #fff;
+	background-color:#155481;
+	border-bottom: 1px solid #80a0b0;
+}
+.modal-footer {
+	background-color:#97B3CD;
+	border-top: 1px solid #80a0b0;
+	margin-top: 0;
+}
+.modal-body {
+	background-color:#97B3CD;
+}
+
+.panel-group .panel-heading + .panel-collapse .panel-body{
+	border-top: 1px solid #80a0b0;
+	border-bottom: 1px solid #155481;
+}
+.close {
+	color:#fff;
+}
+.flat {
+	border-radius: 0px;
+}
+
+hr {
+	border-top: 1px solid #80a0b0;	
+}
+
+.list-group-item {
+	background-color:#97B3CD;
+	border: 1px solid #80a0b0;
+}
+.rotate-45deg    {  
+    -webkit-transform:rotate(45deg);
+    -moz-transform:rotate(45deg);
+    -o-transform:rotate(45deg);
+    -ms-transform:rotate(45deg);
+}
+
+/* Overwriting these because the default rounded corners didn't look quite right */
+.panel-heading, .flat-top {
+	border-top-left-radius: 0px;
+	border-top-right-radius: 0px;
+}
+
+#layerPanel a.accordion-toggle { 
+	display: inline-block;
+}
+
+.layerSpan {
+}
