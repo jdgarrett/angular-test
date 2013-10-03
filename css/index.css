@@ -86,3 +86,9 @@ hr {
 
 .layerSpan {
 }
+
+.notification-content.in {
+	max-height: 400px;
+    overflow: hidden;
+    overflow-y: auto;
+}

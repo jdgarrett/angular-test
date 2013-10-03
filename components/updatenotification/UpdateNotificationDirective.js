@@ -9,37 +9,7 @@
       replace: true,
       transclude: true,
       scope: { id:'@notificationId' },
-      template: '<div>' + 
-				'  <div id="update-notification-header-{{notification.id}}" class="panel-heading flat toggle collapsed" data-toggle="collapse" data-target="#notification-description-{{notification.id}}">' +
-				'    <div class="row col-xs-12">' +
-				'	   <span style="font-weight: 100; font-size: 14px;">' +
-				'		 <em id="notification-text-{{notification.id}}" class="notification-text">{{updateText}}</em>' +
-				'        <div ng-click="removeNotification()" id="close-button-{{notification.id}}" class="glyphicon glyphicon-remove-circle close-notification"></div>' +
-				'	   </span>' +
-				'	 </div>' +
-				'  </div>' +
-				'  <div id="notification-description-{{notification.id}}" class="notification-description panel collapse">' +
-				'    <ul class="list-group">' +
-				'	   <li class="list-group-item" ng-repeat="repo in notification.repos"> {{repo.name}}' +
-				'        <ul class="list-group">' +
-				'          <li class="list-group-item" ng-repeat="layer in repo.layers"> {{layer.name}}' +
-				'            <ul class="list-group">' +
-				'	           <li class="list-group-item add" ng-click="notification.callback(\'{{add}}\')" ng-repeat="add in layer.adds">' +
-				'	             <span class="glyphicon glyphicon-plus-sign"/>  {{add}}' +
-   				'	           </li>' +
-				'	           <li class="list-group-item modify" ng-click="notification.callback(\'{{modify}}\')" ng-repeat="modify in layer.modifies">' +
-				'	             <span class="glyphicon glyphicon-edit"/>  {{modify}}' +
-   				'	           </li>' +
-				'	           <li class="list-group-item delete" ng-click="notification.callback(\'{{delete}}\')" ng-repeat="delete in layer.deletes">' +
-				'	             <span class="glyphicon glyphicon-minus-sign"/>  {{delete}}' +
-   				'	           </li>' +
-   				'            </ul>' +
-   				'          </li>' +
-   				'        </ul>' +
-   				'      </li>' +
-   				'    </ul>' +
-				'  </div>' +
-				'</div>',
+      templateUrl: 'components/updatenotification/partial/updatenotification.html',
       // The linking function will add behavior to the template
       link: function(scope, element, attrs) {
         // Title element
@@ -64,30 +34,36 @@
         }
         
         var repos = scope.notification.repos;
-        console.log(repos);
-        var adds = 0;
-        var modifies = 0;
-        var deletes = 0;
+        var adds = [];
+        var modifies = [];
+        var deletes = [];
         for(var i = 0; i < repos.length; i++) {
         	var layers = repos[i].layers;
-        	console.log(layers);
         	for(var j = 0; j < layers.length; j++) {
         		var layer = layers[j];
-        	    console.log(layer);
         		if(layer.adds) {
-        			adds = adds + layer.adds.length;
+        			for(var k = 0; k < layer.adds.length; k++) {
+        				adds.push({repo:repos[i].name, layer:layer.name,feature:layer.adds[k]});
+        			}
         		}
         		if(layer.modifies) {
-        			modifies = modifies + layer.modifies.length;
+        			for(var k = 0; k < layer.modifies.length; k++) {
+        				modifies.push({repo:repos[i].name, layer:layer.name,feature:layer.modifies[k]});
+        			}
         		}
         		if(layer.deletes) {
-        			deletes = deletes + layer.deletes.length;
+        			for(var k = 0; k < layer.deletes.length; k++) {
+        				deletes.push({repo:repos[i].name, layer:layer.name,feature:layer.deletes[k]});
+        			}
         		}
         	}
         }
-        scope.updateText = adds + " Added, " + modifies + " Modified, " + deletes + " Deleted";
+        scope.adds = adds;
+        scope.modifies = modifies;
+        scope.deletes = deletes;
+        scope.updateText = adds.length + " Added, " + modifies.length + " Modified, " + deletes.length + " Deleted";
         				   
-        if(adds + modifies + deletes === 0) {
+        if(adds.length + modifies.length + deletes.length === 0) {
           scope.updateText = "No changes received.";
         }
       }

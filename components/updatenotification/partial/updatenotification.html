@@ -1,0 +1,23 @@
+<div>
+	<div id="update-notification-header-{{notification.id}}" class="panel-heading flat toggle collapsed" data-toggle="collapse" data-target="#notification-description-{{notification.id}}">
+		<div class="row col-xs-12">
+			<span style="font-weight: 100; font-size: 14px;">
+				<em id="notification-text-{{notification.id}}" class="notification-text">{{updateText}}</em>
+				<div ng-click="removeNotification()" id="close-button-{{notification.id}}" class="glyphicon glyphicon-remove-circle close-notification"></div>
+			</span>
+		</div>
+	</div>
+	<div id="notification-description-{{notification.id}}" class="notification-description panel collapse">
+		<ul class="list-group">
+			<li class="list-group-item add" ng-click="notification.callback({{add}})" ng-repeat="add in adds">
+				<span class="glyphicon glyphicon-plus-sign"/>  '{{add.feature}}' to {{add.layer}}
+			</li>
+			<li class="list-group-item modify" ng-click="notification.callback({{modify}})" ng-repeat="modify in modifies">
+				<span class="glyphicon glyphicon-edit"/>  '{{modify.feature}}' in {{modify.layer}}
+			</li>
+			<li class="list-group-item delete" ng-click="notification.callback({{delete}})" ng-repeat="delete in deletes">
+				<span class="glyphicon glyphicon-minus-sign"/>  '{{delete.feature}}' from {{delete.layer}}
+			</li>
+		</ul>
+	</div>
+</div>

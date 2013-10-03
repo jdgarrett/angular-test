@@ -1,5 +1,7 @@
 (function() {
   goog.provide('sal_notification_poster_directive');
+  
+  goog.require('sal_notifications_service');
 
   var module = angular.module('sal_notification_poster_directive', []);
 
@@ -42,8 +44,8 @@
             			deletes: []
             		}]
             }],
-            callback: function(repo,featureId) {
-            	alert(featureId + " was clicked!");
+            callback: function(feature) {
+            	alert(feature.feature + " was clicked!");
             }
           });
         }

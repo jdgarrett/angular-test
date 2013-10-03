@@ -3,13 +3,13 @@
   padding:0px;
 }
 .add {
-  color: green;
+  color: #008800;
 }
 .modify {
-  color: yellow;
+  color: #666600;
 }
 .delete {
-  color: red;
+  color: #880000;
 }
 
 .notification-text {
@@ -20,4 +20,5 @@
 .close-notification {
   position:absolute;
   right:-15px;
+  font-size:18px;
 }

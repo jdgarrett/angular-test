@@ -8,26 +8,8 @@
       restrict: 'C',
       replace: true,
       transclude: true,
-      scope: { title:'@notificationTitle',
-      		   emptyText: '@notificationEmptyText' },
-      template: '<div class="panel flat">' + 
-      			'  <div class="panel-heading toggle collapsed" data-toggle="collapse" data-target="#notification-content">' +
-				'    <div class="row col-xs-12">' +
-				'	   <span style="font-weight: 100; font-size: 20px;">' +
-				'		 <em id="notification-title" class="notification-title closed">{{title}} <span class="notification-badge badge pull-right" ng-if="notificationService.unreadCount() > 0">{{notificationService.unreadCount()}}</span></em>' +
-				'	   </span>' +
-				'	 </div>' +
-				'  </div>' +
-				'  <div id="notification-content" class="panel-group collapse">' + 
-				'    <div ng-if="notificationService.getNotifications().length == 0" class="panel-heading flat">{{emptyText}}</div>' +
-				'	 <div ng-repeat="notification in notifications = notificationService.getNotifications() | orderBy:\'id\':true">' +
-				'	   <div ng-switch on="notification.type">' +
-				'        <div ng-switch-when="sal-update-notification" class="sal-update-notification" notification-id="{{notification.id}}">{{notification.text}}</div>' +
-				'		 <div ng-switch-default>{{notification.text}}</div>' +
-				'      </div>' +
-   				'	 </div>' +
-				'  </div>' +
-				'</div>',
+      scope: { title: '@notificationTitle', emptyText: '@notificationEmptyText' },
+      templateUrl: 'components/notifications/partial/notifications.html',
       // The linking function will add behavior to the template
       link: function(scope, element, attrs) {
         // Title element

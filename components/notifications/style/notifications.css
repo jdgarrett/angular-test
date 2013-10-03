@@ -8,6 +8,10 @@
   padding:0px;
 }
 
+.notification-content {
+	max-height: 400px;
+}
+
 #notification-content .panel-heading {
 	color: #fff;
 	background-color: #155481;
