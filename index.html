@@ -8,12 +8,14 @@
 		<link rel="stylesheet" href="components/notifications/style/notifications.css" type="text/css"/>
 		<link rel="stylesheet" href="components/notificationposter/style/notificationposter.css" type="text/css"/>
 		<link rel="stylesheet" href="components/updatenotification/style/updatenotification.css" type="text/css"/>
+		<link rel="stylesheet" href="components/notificationpopup/style/notificationpopup.css" type="text/css"/>
 		<link rel="stylesheet" href="css/index.css" type="text/css"/>
 	</head>
 	<body>
 			<div id="map" class="map">
 				<div class="sal-notifications" notification-title="Notifications" notification-empty-text="No notifications..."></div>
 				<div class="sal-notification-poster col-xs-2" poster-title="Post Notification"></div>
+				<div class="sal-notification-popup"></div>
 			</div>
 		<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
 		<script src="lib/bootstrap/js/bootstrap.js"></script>
@@ -31,6 +33,8 @@
 		<script src="components/notificationposter/NotificationPosterModule.js"></script>
 		<script src="components/updatenotification/UpdateNotificationDirective.js"></script>
 		<script src="components/updatenotification/UpdateNotificationModule.js"></script>
+		<script src="components/notificationpopup/NotificationPopupDirective.js"></script>
+		<script src="components/notificationpopup/NotificationPopupModule.js"></script>
 		<script src="js/SalModule.js"></script>
 		<script type="text/javascript">
       		var map = new ol.Map({

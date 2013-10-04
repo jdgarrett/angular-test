@@ -14,7 +14,7 @@
 		<div ng-repeat="notification in notifications = notificationService.getNotifications() | orderBy:'id':true">
 			<div ng-switch on="notification.type">
 				<div ng-switch-when="sal-update-notification" class="sal-update-notification" notification-id="{{notification.id}}">{{notification.text}}</div>
-				<div ng-switch-default>{{notification.text}}</div>
+				<div ng-switch-default class="panel-heading flat">{{notification.text}}</div>
 			</div>
 		</div>
 	</div>
