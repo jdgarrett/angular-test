@@ -1,8 +1,10 @@
 .sal-notfications {
   width:100%;
 }
-.notification-title.opened:before { content: '▼ '; }
-.notification-title.closed:before { content: '► '; }
+
+.notification-title:before { content: '▼ '; }
+.collapsed .notification-title:before { content: '► '; }
+
 .sal-notifications > .body {
   width:100%;
   padding:0px;

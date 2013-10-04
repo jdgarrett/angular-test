@@ -14,21 +14,21 @@
       link: function(scope, element, attrs) {
         // Title element
         var content = angular.element('#notification-content');
-        // Opened / closed state
-        var opened = false;
-        scope.opened = opened;
 
         // Clicking on title should open/close the menu
         var title = angular.element('#notification-title');
         var rootElement = angular.element(element.children()[0]);
         rootElement.on('click', refresh);
+        
+        function removeNotification(id) {
+        	notificationService.removeNotification($rootScope, id);
+        }
+
+        scope.removeNotification = removeNotification;
 
         // Toggle the closed/opened state
         function refresh() {
-          opened = content.hasClass('collapse');
-          title.removeClass(opened ? 'closed' : 'opened');
-          title.addClass(opened ? 'opened' : 'closed');
-          if (opened) {
+          if (content.hasClass('in')) {
             var notifications = notificationService.getNotifications();
             for (var i = 0; i < notifications.length; i++) {
               if (notifications[i].read === false) {
@@ -36,11 +36,6 @@
               }
             }
           }
-          if (!scope.$$phase && !$rootScope.$$phase) {
-            scope.$apply(function() {
-     	  	  scope.opened = opened;
-   		    });
-   		  }
         }
 
         function updateScopeVariables() {
@@ -58,7 +53,7 @@
         scope.numNotifications = notificationService.getNotifications().length;
 
         scope.$on('notification_added', function(event, data) {
-          if (opened === true) {
+          if (content.hasClass('in')) {
             notificationService.markAsRead($rootScope, data);
           }
           updateScopeVariables();

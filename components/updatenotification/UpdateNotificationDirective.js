@@ -20,12 +20,10 @@
         var rootElement = angular.element(element.children()[0]);
 
         var headerElement = angular.element('#update-notification-header-' + scope.id);
-
-        function removeNotification() {
-        	notificationService.removeNotification($rootScope, scope.id);
-        }
-
-        scope.removeNotification = removeNotification;
+        headerElement.attr("data-toggle","collapse");
+        headerElement.attr("data-target","#notification-description-" + scope.id);
+        headerElement.addClass("toggle");
+        headerElement.addClass("collapsed");
 
         scope.notification = notificationService.getNotification(scope.id);
 
@@ -61,11 +59,11 @@
         scope.adds = adds;
         scope.modifies = modifies;
         scope.deletes = deletes;
-        scope.updateText = adds.length + ' Added, ' + modifies.length + ' Modified, ' + deletes.length + ' Deleted';
+        //scope.updateText = adds.length + ' Added, ' + modifies.length + ' Modified, ' + deletes.length + ' Deleted';
 
-        if (adds.length + modifies.length + deletes.length === 0) {
-          scope.updateText = 'No changes received.';
-        }
+        //if (adds.length + modifies.length + deletes.length === 0) {
+        //  scope.updateText = 'No changes received.';
+        //}
       }
     };
   });

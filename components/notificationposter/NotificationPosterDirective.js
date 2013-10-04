@@ -26,7 +26,7 @@
         function addNotification() {
           count = count + 1;
           notificationService.addNotification($rootScope, {
-            text: 'Updates Received',
+            text: '1 Added, 3 Modified, 1 Deleted',
             read: false,
             type: 'sal-update-notification',
             repos: [{

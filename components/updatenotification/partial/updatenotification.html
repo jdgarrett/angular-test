@@ -1,12 +1,4 @@
 <div>
-	<div id="update-notification-header-{{notification.id}}" class="panel-heading flat toggle collapsed" data-toggle="collapse" data-target="#notification-description-{{notification.id}}">
-		<div class="row col-xs-12">
-			<span style="font-weight: 100; font-size: 14px;">
-				<em id="notification-text-{{notification.id}}" class="notification-text">{{updateText}}</em>
-				<div ng-click="removeNotification()" id="close-button-{{notification.id}}" class="glyphicon glyphicon-remove-circle close-notification"></div>
-			</span>
-		</div>
-	</div>
 	<div id="notification-description-{{notification.id}}" class="notification-description panel collapse">
 		<ul class="list-group">
 			<li class="list-group-item add" ng-click="notification.callback({{add}})" ng-repeat="add in adds">
