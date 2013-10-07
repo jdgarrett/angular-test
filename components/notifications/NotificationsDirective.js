@@ -28,7 +28,7 @@
 
         // Toggle the closed/opened state
         function refresh() {
-          if (content.hasClass('in')) {
+          if (!content.hasClass('collapsed')) {
             var notifications = notificationService.getNotifications();
             for (var i = 0; i < notifications.length; i++) {
               if (notifications[i].read === false) {

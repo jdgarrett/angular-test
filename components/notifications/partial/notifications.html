@@ -1,10 +1,10 @@
 <div class="panel flat">
-	<div class="notification-header panel-heading toggle collapsed" data-toggle="collapse" data-target="#notification-content">
+	<div class="panel-heading toggle collapsed" data-toggle="collapse" data-target="#notification-content">
 		<div class="row col-xs-12">
 			<span style="font-weight: 100; font-size: 20px;">
 				<em id="notification-title" class="notification-title">
 					{{title}}
-					<span class="notification-badge badge pull-right" ng-if="notificationService.unreadCount() > 0">{{notificationService.unreadCount()}}</span>
+					<sal-notification-badge class="pull-right"/>
 				</em>
 			</span>
 		</div>

@@ -1,15 +1,5 @@
 <div>
 	<div id="notification-description-{{notification.id}}" class="notification-description panel collapse">
-		<ul class="list-group">
-			<li class="list-group-item add" ng-click="notification.callback({{add}})" ng-repeat="add in adds">
-				<span class="glyphicon glyphicon-plus-sign"/>  '{{add.feature}}' to {{add.layer}}
-			</li>
-			<li class="list-group-item modify" ng-click="notification.callback({{modify}})" ng-repeat="modify in modifies">
-				<span class="glyphicon glyphicon-edit"/>  '{{modify.feature}}' in {{modify.layer}}
-			</li>
-			<li class="list-group-item delete" ng-click="notification.callback({{delete}})" ng-repeat="delete in deletes">
-				<span class="glyphicon glyphicon-minus-sign"/>  '{{delete.feature}}' from {{delete.layer}}
-			</li>
-		</ul>
+		<sal-diff-list add-list="adds" modify-list="modifies" delete-list="deletes" click-callback="notification.callback"></sal-diff-list>
 	</div>
 </div>
