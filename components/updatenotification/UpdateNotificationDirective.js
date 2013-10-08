@@ -1,13 +1,12 @@
 (function() {
-  goog.provide('sal_update_notification_directive');
+  goog.provide('loom_update_notification_directive');
 
-  var module = angular.module('sal_update_notification_directive', []);
+  var module = angular.module('loom_update_notification_directive', []);
 
-  module.directive('salUpdateNotification', function($rootScope, notificationService) {
+  module.directive('loomUpdateNotification', function($rootScope, notificationService) {
     return {
       restrict: 'C',
       replace: true,
-      transclude: true,
       scope: { id: '@notificationId' },
       templateUrl: 'components/updatenotification/partial/updatenotification.html',
       // The linking function will add behavior to the template
@@ -22,6 +21,7 @@
         var headerElement = angular.element('#update-notification-header-' + scope.id);
         headerElement.attr("data-toggle","collapse");
         headerElement.attr("data-target","#notification-description-" + scope.id);
+        headerElement.attr("data-parent","#notification-collapse-group" );
         headerElement.addClass("toggle");
         headerElement.addClass("collapsed");
 

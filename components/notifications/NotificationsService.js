@@ -1,14 +1,16 @@
 (function() {
-  goog.provide('sal_notifications_service');
+  goog.provide('loom_notifications_service');
 
-  var module = angular.module('sal_notifications_service', []);
+  var module = angular.module('loom_notifications_service', []);
 
   // Private Variables
   var notifications = [];
   var nextNotificationId = 0;
+  var rootScope = null;
 
   module.provider('notificationService', function() {
 	  this.$get = function($rootScope) {
+	    rootScope = $rootScope;
 	  	return this;
 	  };
 
@@ -16,10 +18,10 @@
 	    return notifications;
 	  };
 
-	  this.addNotification = function(scope, notification ) {
+	  this.addNotification = function( notification ) {
 	    notification.id = nextNotificationId++;
 		notifications.push(notification);
-		scope.$broadcast('notification_added', notification);
+		rootScope.$broadcast('notification_added', notification);
 	  };
 
 	  this.unreadCount = function() {
@@ -33,13 +35,13 @@
 	  	return unread;
 	  };
 
-	  this.markAsRead = function(scope, notification) {
+	  this.markAsRead = function(notification) {
 	  	for (var i = 0; i < notifications.length; i++) {
 	  	  if (notifications[i].id === notification.id) {
 	  	    notifications[i].read = true;
 	  	  }
 	  	}
-	  	scope.$broadcast('notification_updated', notification);
+	  	rootScope.$broadcast('notification_updated', notification);
 	  };
 
 	  this.getNotification = function(id) {
@@ -50,7 +52,7 @@
 	  	}
 	  };
 
-	  this.removeNotification = function(scope,id) {
+	  this.removeNotification = function(id) {
 	    var index = -1;
 	  	for (var i = 0; i < notifications.length; i++) {
 	  	  if (notifications[i].id == id) {
@@ -60,7 +62,7 @@
 	  	if (index > -1) {
           notifications.splice(index, 1);
         }
-        scope.$broadcast('notification_removed', id);
+        rootScope.$broadcast('notification_removed', id);
 	  };
   });
 

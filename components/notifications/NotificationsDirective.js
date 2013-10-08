@@ -1,42 +1,30 @@
 (function() {
-  goog.provide('sal_notifications_directive');
+  goog.provide('loom_notifications_directive');
 
-  var module = angular.module('sal_notifications_directive', []);
+  var module = angular.module('loom_notifications_directive', []);
 
-  module.directive('salNotifications', function($rootScope, notificationService) {
+  module.directive('loomNotifications', function($rootScope, notificationService) {
     return {
       restrict: 'C',
       replace: true,
-      transclude: true,
-      scope: { title: '@notificationTitle', emptyText: '@notificationEmptyText' },
+      scope: {emptyText: '@notificationEmptyText' },
       templateUrl: 'components/notifications/partial/notifications.html',
       // The linking function will add behavior to the template
       link: function(scope, element, attrs) {
-        // Title element
-        var content = angular.element('#notification-content');
-
-        // Clicking on title should open/close the menu
-        var title = angular.element('#notification-title');
-        var rootElement = angular.element(element.children()[0]);
-        rootElement.on('click', refresh);
+        var content = element;
+        parent = element.parent
         
         function removeNotification(id) {
-        	notificationService.removeNotification($rootScope, id);
+        	notificationService.removeNotification(id);
         }
 
         scope.removeNotification = removeNotification;
-
-        // Toggle the closed/opened state
-        function refresh() {
-          if (!content.hasClass('collapsed')) {
-            var notifications = notificationService.getNotifications();
-            for (var i = 0; i < notifications.length; i++) {
-              if (notifications[i].read === false) {
-              	notificationService.markAsRead($rootScope, notifications[i]);
-              }
-            }
-          }
+        
+        function markAsRead(id) {
+            notificationService.markAsRead(notificationService.getNotification(id));
         }
+        
+        scope.markAsRead = markAsRead;
 
         function updateScopeVariables() {
           if (!scope.$$phase && !$rootScope.$$phase) {
@@ -52,13 +40,7 @@
         scope.notificationsEmpty = notificationService.getNotifications().length === 0;
         scope.numNotifications = notificationService.getNotifications().length;
 
-        scope.$on('notification_added', function(event, data) {
-          if (content.hasClass('in')) {
-            notificationService.markAsRead($rootScope, data);
-          }
-          updateScopeVariables();
-        });
-
+        scope.$on('notification_added', updateScopeVariables);
         scope.$on('notification_updated', updateScopeVariables);
         scope.$on('notification_removed', updateScopeVariables);
       }

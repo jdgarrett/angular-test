@@ -1,28 +1,16 @@
-<div class="panel flat">
-	<div class="panel-heading toggle collapsed" data-toggle="collapse" data-target="#notification-content">
-		<div class="row col-xs-12">
-			<span style="font-weight: 100; font-size: 20px;">
-				<em id="notification-title" class="notification-title">
-					{{title}}
-					<sal-notification-badge class="pull-right"/>
-				</em>
-			</span>
-		</div>
-	</div>
-	<div id="notification-content" class="notification-content panel-group collapse">
-		<div ng-if="notificationService.getNotifications().length == 0" class="panel-heading flat">{{emptyText}}</div>
-		<div ng-repeat="notification in notifications = notificationService.getNotifications() | orderBy:'id':true">
-		    <div id="update-notification-header-{{notification.id}}" class="panel-heading flat">
-		        <div class="row col-xs-12">
-			        <span style="font-weight: 100; font-size: 14px;">
-				        <em id="notification-text-{{notification.id}}" class="notification-text">{{notification.text}}</em>
-				        <div ng-click="removeNotification({{notification.id}})" id="close-button-{{notification.id}}" class="glyphicon glyphicon-remove-circle close-notification"></div>
-			        </span>
-		        </div>
-	        </div>
-			<div ng-switch on="notification.type">
-				<div ng-switch-when="sal-update-notification" class="sal-update-notification" notification-id="{{notification.id}}">{{notification.text}}</div>
-			</div>
-		</div>
+<div class="notification-content panel-collapse collapse">
+    <div id="notification-collapse-group" class="panel-group">
+        <div ng-if="notificationService.getNotifications().length == 0" class="notification-panel-heading panel-heading flat">{{emptyText}}</div>
+        <div class="panel" ng-repeat="notification in notifications = notificationService.getNotifications() | orderBy:'id':true">
+            <div id="update-notification-header-{{notification.id}}" ng-click="markAsRead({{notification.id}})" ng-class="{read: notification.read}" class="notification-panel-heading panel-heading flat">
+                <div class="row col-xs-12">
+                    <span>
+                        <p id="notification-text-{{notification.id}}" class="notification-text">{{notification.text}}</p>
+                        <div ng-click="removeNotification({{notification.id}})" id="close-button-{{notification.id}}" class="glyphicon glyphicon-remove-circle close-notification"></div>
+                    </span>
+                </div>
+            </div>
+            <div id="notification-description-{{notification.id}}"  ng-if="notification.type === 'loom-update-notification'" class="loom-update-notification" notification-id="{{notification.id}}">{{notification.text}}</div>
+        </div>
 	</div>
 </div>

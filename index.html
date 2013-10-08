@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="sal">
+<html ng-app="loom">
 	<head>
 		<meta charset="utf-8"> 
 		<title>Notification Test</title>
@@ -8,15 +8,42 @@
 		<link rel="stylesheet" href="components/notifications/style/notifications.css" type="text/css"/>
 		<link rel="stylesheet" href="components/notificationposter/style/notificationposter.css" type="text/css"/>
 		<link rel="stylesheet" href="components/updatenotification/style/updatenotification.css" type="text/css"/>
-		<link rel="stylesheet" href="components/notificationpopup/style/notificationpopup.css" type="text/css"/>
-		<link rel="stylesheet" href="components/difflist/style/difflist.css" type="text/css"/>
+		<link rel="stylesheet" href="components/diff/style/difflist.css" type="text/css"/>
 		<link rel="stylesheet" href="css/index.css" type="text/css"/>
 	</head>
 	<body>
 			<div id="map" class="map">
-				<div class="sal-notifications" notification-title="Notifications" notification-empty-text="No notifications..."></div>
-				<div class="sal-notification-poster col-xs-2" poster-title="Post Notification"></div>
-				<div class="sal-notification-popup"></div>
+			    <div id="pulldown">
+			        <div class="panel flat" id="MapTitle">
+				        <div class="panel-heading">
+					        <span style="font-weight: 100; font-size: 20px;">
+						        <em id="MapName">New Map</em>
+					        </span>
+					        <span class="loom-notification-badge pull-right"></span>
+				        </div>
+			        </div>
+			        <div id="pulldown-content" class="panel-group in">
+			            <div class="panel">
+					        <a class="panel-heading" data-toggle="collapse" data-parent="#pulldown-content" href="#notificationPanel">
+						        <span>Notifications</span>
+						        <span class="loom-notification-badge pull-right"></span>
+					        </a>
+					        <div id="notificationPanel" notification-empty-text="No notifications..." class="loom-notifications">
+					        </div>
+				        </div>
+				        <div ng-controller="LoomDiffController">
+				            <div class="panel" ng-if="hasDifferences">
+					            <a class="panel-heading" data-toggle="collapse" data-parent="#pulldown-content" href="#diffPanel">
+						            <span>Differences</span>
+					            </a>
+					            <div id="diffPanel" class="loom-diff-panel panel-collapse collapse">Diffs go here.</div>
+				            </div>
+				        </div>
+				    </div>
+			        <button type="button" data-toggle="collapse" data-target="#pulldown-content" class="toggle btn btn-default flat-top">Toggle Menu</button>
+		        </div>
+				<div class="loom-notifications" notification-title="Notifications" notification-empty-text="No notifications..."></div>
+				<div class="loom-notification-poster"></div>
 			</div>
 		<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
 		<script src="lib/bootstrap/js/bootstrap.js"></script>
@@ -35,11 +62,12 @@
 		<script src="components/notificationposter/NotificationPosterModule.js"></script>
 		<script src="components/updatenotification/UpdateNotificationDirective.js"></script>
 		<script src="components/updatenotification/UpdateNotificationModule.js"></script>
-		<script src="components/notificationpopup/NotificationPopupDirective.js"></script>
-		<script src="components/notificationpopup/NotificationPopupModule.js"></script>
-		<script src="components/difflist/DiffListDirective.js"></script>
-		<script src="components/difflist/DiffListModule.js"></script>
-		<script src="js/SalModule.js"></script>
+		<script src="components/diff/DiffListDirective.js"></script>
+		<script src="components/diff/DiffService.js"></script>
+		<script src="components/diff/DiffPanelDirective.js"></script>
+		<script src="components/diff/DiffModule.js"></script>
+		<script src="js/DiffPanelController.js"></script>
+		<script src="js/LoomModule.js"></script>
 		<script type="text/javascript">
       		var map = new ol.Map({
         		target: 'map',

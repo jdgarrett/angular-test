@@ -1,9 +1,9 @@
 (function() {
-  goog.provide('sal_notification_poster');
+  goog.provide('loom_notification_poster');
 
-  goog.require('sal_notification_poster_directive');
+  goog.require('loom_notification_poster_directive');
 
-  angular.module('sal_notification_poster', [
-    'sal_notification_poster_directive'
+  angular.module('loom_notification_poster', [
+    'loom_notification_poster_directive'
   ]);
 })();
