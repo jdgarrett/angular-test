@@ -8,7 +8,7 @@
       restrict: 'C',
       replace: true,
       templateUrl: 'components/diff/partial/diffpanel.html',
-      link: function(scope, element, attrs) {
+      link: function(scope) { // Unused: element, attrs
         function updateScopeVariables() {
           if (!scope.$$phase && !$rootScope.$$phase) {
             scope.$apply(function() {

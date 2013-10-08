@@ -11,7 +11,7 @@
           scope: {emptyText: '@notificationEmptyText' },
           templateUrl: 'components/notifications/partial/notifications.html',
           // The linking function will add behavior to the template
-          link: function(scope, element, attrs) {
+          link: function(scope) { //Unused: element, attrs
             function removeNotification(id) {
               notificationService.removeNotification(id);
             }

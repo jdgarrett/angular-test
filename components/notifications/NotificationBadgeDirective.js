@@ -10,7 +10,7 @@
           replace: true,
           templateUrl: 'components/notifications/partial/notificationbadge.html',
           // The linking function will add behavior to the template
-          link: function(scope, element, attrs) {
+          link: function(scope) { // Unused: element, attrs
             function updateScopeVariables() {
               if (!scope.$$phase && !$rootScope.$$phase) {
                 scope.$apply(function() {

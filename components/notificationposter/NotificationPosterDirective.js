@@ -21,7 +21,7 @@
               '  </div>' +
               '</div>',
           // The linking function will add behavior to the template
-          link: function(scope, element, attrs) {
+          link: function(scope) { //Unused: element, attrs
             function addNotification() {
               notificationService.addNotification({
                 text: '1 Added, 3 Modified, 1 Deleted',
