@@ -1,4 +1,7 @@
-(function() {
+(function () {
+  "use strict";
+  /*global goog*/
+  /*global angular*/
   goog.provide('loom_update_notification');
 
   goog.require('loom_update_notification_directive');

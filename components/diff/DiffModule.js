@@ -1,4 +1,7 @@
-(function() {
+(function () {
+  "use strict";
+  /*global goog*/
+  /*global angular*/
   goog.provide('loom_diff');
 
   goog.require('loom_diff_list_directive');
