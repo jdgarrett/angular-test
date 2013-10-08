@@ -13,4 +13,4 @@
     'loom_diff_service',
     'loom_diff_panel_directive'
   ]);
-})();
+}());

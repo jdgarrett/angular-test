@@ -7,7 +7,7 @@
   var module = angular.module('loom_update_notification_directive', []);
 
   module.directive('loomUpdateNotification',
-    function ($rootScope, notificationService) {
+    function () {
       return {
         restrict: 'C',
         replace: true,
@@ -15,15 +15,7 @@
         templateUrl:
           'components/updatenotification/partial/updatenotification.html',
         // The linking function will add behavior to the template
-        link: function (scope, element, attrs) {
-          // Title element
-          var content = angular.element('#notification-description-' +
-            scope.notification.id);
-
-          // Clicking on title should open/close the menu
-          var title = angular.element('#notification-text-' +
-            scope.notification.id);
-          var rootElement = angular.element(element.children()[0]);
+        link: function (scope) { // Unused: element, attrs
 
           var headerElement = angular.element('#update-notification-header-' +
             scope.notification.id);
@@ -79,4 +71,4 @@
         }
       };
     });
-})();
+}());

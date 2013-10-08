@@ -41,7 +41,7 @@
       deletes = [
         {repo: 'repo1', layer: 'layer2', feature: 'fid-23cdfa320'}
       ];
-      rootScope.$broadcast('diff_performed');
+      rootScope.$broadcast('diff_performed', repo, from, to);
     };
 
     this.clearDiff = function () {
@@ -56,4 +56,4 @@
     };
   });
 
-})();
+}());

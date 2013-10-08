@@ -19,4 +19,4 @@
       templateUrl: 'components/diff/partial/difflist.html'
     };
   });
-})();
+}());

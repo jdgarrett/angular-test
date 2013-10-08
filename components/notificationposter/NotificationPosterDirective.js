@@ -16,9 +16,12 @@
         replace: true,
         template: '<div class="panel flat">' +
           '  <div class="btn-group">' +
-          '    <button type="button" ng-click="addNotification()" class="btn btn-default">Post Notification</button>' +
-          '    <button type="button" ng-click="performDiff()" class="btn btn-default">Perform Diff</button>' +
-          '    <button type="button" ng-click="clearDiff()" class="btn btn-default">Clear Diff</button>' +
+          '    <button type="button" ng-click="addNotification()"' +
+          '      class="btn btn-default">Post Notification</button>' +
+          '    <button type="button" ng-click="performDiff()"' +
+          '      class="btn btn-default">Perform Diff</button>' +
+          '    <button type="button" ng-click="clearDiff()"' +
+          '      class="btn btn-default">Clear Diff</button>' +
           '  </div>' +
           '</div>',
         // The linking function will add behavior to the template
@@ -69,4 +72,4 @@
         }
       };
     });
-})();
+}());
