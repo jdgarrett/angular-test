@@ -1,15 +1,12 @@
-(function () {
-  "use strict";
-  /*global goog*/
-  /*global angular*/
+(function() {
   goog.provide('loom');
 
 
-  goog.require('loom_notifications');
-  goog.require('loom_notification_poster');
-  goog.require('loom_update_notification');
   goog.require('loom_diff');
   goog.require('loom_diff_controller');
+  goog.require('loom_notification_poster');
+  goog.require('loom_notifications');
+  goog.require('loom_update_notification');
 
   angular.module('loom', [
     'loom_notifications',

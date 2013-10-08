@@ -1,7 +1,4 @@
-(function () {
-  "use strict";
-  /*global goog*/
-  /*global angular*/
+(function() {
   goog.provide('loom_diff_service');
 
   var module = angular.module('loom_diff_service', []);
@@ -12,25 +9,25 @@
   var deletes = [];
   var rootScope = null;
 
-  module.provider('diffService', function () {
-    this.$get = function ($rootScope) {
+  module.provider('diffService', function() {
+    this.$get = function($rootScope) {
       rootScope = $rootScope;
       return this;
     };
 
-    this.getAdds = function () {
+    this.getAdds = function() {
       return adds;
     };
 
-    this.getModifies = function () {
+    this.getModifies = function() {
       return modifies;
     };
 
-    this.getDeletes = function () {
+    this.getDeletes = function() {
       return deletes;
     };
 
-    this.performDiff = function (repo, from, to) {
+    this.performDiff = function(repo, from, to) {
       adds = [
         {repo: 'repo1', layer: 'layer1', feature: 'fid-34f32ac32'}
       ];
@@ -44,14 +41,14 @@
       rootScope.$broadcast('diff_performed', repo, from, to);
     };
 
-    this.clearDiff = function () {
+    this.clearDiff = function() {
       adds = [];
       modifies = [];
       deletes = [];
       rootScope.$broadcast('diff_cleared');
     };
 
-    this.hasDifferences = function () {
+    this.hasDifferences = function() {
       return (adds.length + modifies.length + deletes.length !== 0);
     };
   });

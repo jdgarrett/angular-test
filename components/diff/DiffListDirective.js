@@ -1,12 +1,9 @@
-(function () {
-  "use strict";
-  /*global goog*/
-  /*global angular*/
+(function() {
   goog.provide('loom_diff_list_directive');
 
   var module = angular.module('loom_diff_list_directive', []);
 
-  module.directive('loomDiffList', function ($rootScope) {
+  module.directive('loomDiffList', function() {
     return {
       restrict: 'C',
       replace: true,
